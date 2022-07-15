@@ -22,3 +22,9 @@ CREATE TABLE foods (
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE creations (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    calories INT,
+    type VARCHAR(255)
+);

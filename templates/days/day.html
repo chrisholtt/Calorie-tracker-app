@@ -29,7 +29,7 @@
             <form action="/calories/{{ user.id }}/{{ day }}" method="POST">
                 <input type="number" placeholder="Calories for {{ day }}" min="1" max="10000" class="calorie-btn"
                     name="target_calories" required>
-                <button></button>
+                <button>Confirm</button>
             </form>
         </div>
         <div class="ate-and-eat-text">
@@ -41,14 +41,26 @@
 
 
 <!-- Finish this after you do days -->
-<form action="/foods/new<user_id>" method="POST">
+<form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
     <br>
     <h2>Create new food:</h2>
     <label for="name">Food name: </label>
-    <input type="name" id="name">
+    <input type="text" id="name" required>
 
     <label for="calories">Number of kcals: </label>
-    <input type="number" id="calories" name="calories">
+    <input type="number" id="calories" name="calories" required>
+
+    <label for="type">Food type</label>
+    <select name="type" id="type" required>
+        <option value="main">main</option>
+        <option value="fruit">fruit</option>
+        <option value="drink">drink</option>
+        <option value="sweets">sweets</option>
+        <option value="sweets">sweets</option>
+        <option value="other">other</option>
+    </select>
+
+    <button>Create</button>
 </form>
 
 {% endblock content %}
