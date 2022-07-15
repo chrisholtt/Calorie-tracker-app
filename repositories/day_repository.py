@@ -39,7 +39,7 @@ def save_days(days):
 
 def select_with_user_id(id):
     days = []
-    sql = "SELECT * FROM days WHERE user_id = %s"
+    sql = "SELECT * FROM days WHERE user_id = %s ORDER BY id"
     values = [id]
     results = run_sql(sql, values)
 
@@ -48,4 +48,24 @@ def select_with_user_id(id):
         for row in results:
             days.append(Day(row['day'], user, row['id']))
     return days
+
+
+def set_target_calories(calories, id, day):
+    sql = """
+    UPDATE days SET target_calories = %s
+    WHERE user_id = %s AND day = %s
+    """
+    values = [calories, id, day]
+    run_sql(sql, values)
+
+
+def get_calories(id, day):
+    calories = None
+    sql = "SELECT target_calories FROM days WHERE user_id = %s AND day = %s"
+    values = [id, day]
+    results = run_sql(sql, values)
+
+    if results:
+        calories = results[0]
+        return calories
 

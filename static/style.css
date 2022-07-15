@@ -1,0 +1,30 @@
+.days-wrapper{
+    display: flex;
+}
+
+.cals-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cals{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.ate-and-eat-text {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.calorie-btn{
+    width: 200px;
+}

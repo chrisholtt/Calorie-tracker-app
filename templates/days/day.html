@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
-
-
-<!-- // this section is kinda outdated. Update it with day.html when done -->
 {% block content %}
 <h1>user data</h1>
 <h1>{{ user.name }}</h1>
 <h1>{{ user.id }}</h1>
 
+<!-- not working -->
 <h1>days:</h1>
 
 <div class="days-wrapper">
@@ -21,7 +19,18 @@
 <div class="cals-wrapper">
     <div class="cals">
         <div>
-            <h1>CALORIES HERE</h1>
+            <!-- Checking to see if there is a calorie value for that day -->
+            {% if calories[0] %}
+            <h1>Target: {{ calories[0] }}</h1>
+            {% else %}
+            <h1>Enter kcal for {{ day }}</h1>
+            {% endif %}
+
+            <form action="/calories/{{ user.id }}/{{ day }}" method="POST">
+                <input type="number" placeholder="Calories for {{ day }}" min="1" max="10000" class="calorie-btn"
+                    name="target_calories" required>
+                <button></button>
+            </form>
         </div>
         <div class="ate-and-eat-text">
             <h3>ATE 500</h3>
@@ -33,6 +42,8 @@
 
 <!-- Finish this after you do days -->
 <form action="/foods/new<user_id>" method="POST">
+    <br>
+    <h2>Create new food:</h2>
     <label for="name">Food name: </label>
     <input type="name" id="name">
 
