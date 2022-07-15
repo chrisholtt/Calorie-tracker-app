@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/users/new" method="POST">
+    <label for="name">Enter your name</label>
+    <input type="text" id="name" name="name" autofocus>
+    <button>Get these gains</button>
+</form>
+
+{% endblock content %}

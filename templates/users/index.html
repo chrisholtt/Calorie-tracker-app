@@ -2,7 +2,28 @@
 
 <!-- if no users display: -->
 {% block content %}
-<h1>users page</h1>
+
+{% if not users %}
+<h1>Create a user:</h1>
+
+<form action="/users/new" method="POST">
+    <label for="name">Enter your name</label>
+    <input type="text" id="name" name="name">
+    <button>Get these gains</button>
+</form>
+
+{% else %}
+
+{% for user in users %}
+<a href="/days/{{user.id }}">
+
+    <h1>{{ user.name }}</h1>
+</a>
+{% endfor %}
+
+<a href="/users/signup">Create another user</a>
+
+{% endif %}
 {% endblock content %}
 
 
