@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS foods;
+DROP TABLE IF EXISTS days;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE days (
+    id SERIAL PRIMARY KEY,
+    day VARCHAR(255),
+    target_calories INT,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE foods (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  calories INT,
+  day_id INT NOT NULL REFERENCES days(id) ON DELETE CASCADE,
+  user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+);
+
