@@ -18,7 +18,9 @@ def day(id, day):
     user = user_repository.select(id)
     days = day_repository.select_with_user_id(id)
     calories = day_repository.get_calories(id, day)
-    return render_template("days/day.html", day=day, user=user, days=days, calories=calories)
+    foods = food_repository.select_all()
+    print(foods)
+    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, foods=foods)
 
 # Calorie POST
 @days_blueprint.route("/calories/<id>/<day>", methods=["POST"])

@@ -18,13 +18,9 @@ CREATE TABLE foods (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   calories INT,
-  day_id INT NOT NULL REFERENCES days(id) ON DELETE CASCADE,
-  user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+  food_type VARCHAR(255),
+  eaten VARCHAR(255),
+  day_id INT REFERENCES days(id) ON DELETE CASCADE,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE creations (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    calories INT,
-    type VARCHAR(255)
-);

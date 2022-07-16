@@ -40,18 +40,62 @@
 </div>
 
 
+
+<h1>{{day}} meals</h1>
+
+
+
+<h1>Past entries</h1>
+
+
+
+
+
+
+
+
+
+<div class="food-wrapper">
+    {% for food in foods %}
+    <div class="food-container">
+        <div class="food-container-inner">
+            <form action="/foods/add/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
+                <label for="day_id">add to day:</label>
+                <select name="day_id" id="day_id">
+                    {% for day in days %}
+                    <option value="{{day.id}}">{{day.day}}</option>
+                    {% endfor %}
+                </select>
+                <button>
+                    <i class="fa-solid fa-circle-plus"></i>
+                </button>
+            </form>
+            <h2> {{food.name}} </h2>
+            <h2> {{food.calories}} </h2>
+            <h2> {{food.food_type}} </h2>
+            <h2> {{food.id}} </h2>
+            <div class="edit-remove-btn">
+                <button>edit</button>
+                <button>remove</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
 <!-- Finish this after you do days -->
 <form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
     <br>
     <h2>Create new food:</h2>
     <label for="name">Food name: </label>
-    <input type="text" id="name" required>
+    <input type="text" id="name" name="name" required>
 
     <label for="calories">Number of kcals: </label>
     <input type="number" id="calories" name="calories" required>
 
     <label for="type">Food type</label>
-    <select name="type" id="type" required>
+    <select name="food_type" id="type" required>
         <option value="main">main</option>
         <option value="fruit">fruit</option>
         <option value="drink">drink</option>

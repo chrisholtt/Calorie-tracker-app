@@ -28,3 +28,44 @@
 .calorie-btn{
     width: 200px;
 }
+
+.food-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+}
+
+.food-container {
+    width: 200px;
+    height: 240px;
+    border-radius: 5px;
+    background: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/*     display: flex;
+    flex-direction: column; */
+.food-container-inner{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 220px;
+    background: white;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.edit-remove-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.food-container h2 {
+    padding: 0;
+    margin: 0;
+}
