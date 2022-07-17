@@ -66,7 +66,7 @@ def get_calories(user_id, id):
     results = run_sql(sql, values)
 
     if results:
-        calories = results[0]
+        calories = results[0]["target_calories"]
         return calories
 
 

@@ -1,3 +1,4 @@
+from re import L
 from flask import request
 from db.run_sql import run_sql
 
@@ -121,6 +122,43 @@ def user_foods(user_id, day_id):
 
     if results:
         for result in results:
-            foods.append(Food(result['name'], result['calories'], result['food_type'], result['day_id'], result['eaten'], result['id']) ) 
+            foods.append(Food(result['name'], result['calories'], result['food_type'], result['eaten'], result["day_id"], result['id']) ) 
     return foods
+
+def eat(bool, id):
+    sql = """
+    UPDATE foods SET eaten = %s
+    WHERE id = %s
+    """
+    values = [bool, id]
+    run_sql(sql, values)
+
+
+def get_eaten_cals(user_id, day_id):
+    eaten_cals = 0
+    sql = """
+    SELECT * FROM foods
+    WHERE user_id = %s AND day_id = %s
+    """
+    values = [user_id, day_id]
+    results = run_sql(sql, values)
+
+    if results:
+        for result in results:
+            if result['eaten'] == 'true':
+                eaten_cals += result['calories']
+        return eaten_cals
+
+def get_eat_cals(calories, eaten_calories):
+    eat_calories = 0
+    if not calories and not eaten_calories:
+        return eat_calories 
+
+    elif calories and eaten_calories:
+        eat_calories = calories - eaten_calories
+        return eat_calories
+
+    elif calories and eat_calories == 0:
+        eat_calories = calories
+        return eat_calories
 

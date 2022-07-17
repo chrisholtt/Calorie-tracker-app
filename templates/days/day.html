@@ -21,8 +21,8 @@
     <div class="cals">
         <div>
             <!-- Checking to see if there is a calorie value for that day -->
-            {% if calories[0] %}
-            <h1>Target: {{ calories[0] }}</h1>
+            {% if calories %}
+            <h1>Target: {{ calories }}</h1>
             {% else %}
             <h1>Enter kcal for {{ day }}</h1>
             {% endif %}
@@ -34,15 +34,25 @@
             </form>
         </div>
         <div class="ate-and-eat-text">
-            <h3>ATE 500</h3>
-            <h3>EAT 2500</h3>
+            {% if eaten_calories %}
+            <h3>Ate: {{ eaten_calories }}kcals</h3>
+            {% else %}
+            <h3>Ate: 0 kcals</h3>
+            {% endif %}
+
+            {% if calories %}
+            <h3>Eat: {{ eat_calories }}</h3>
+            {% else %}
+            <h3>Eat: 0</h3>
+            {% endif %}
+
         </div>
     </div>
 </div>
 
 
+<!-- Users food -->
 <h1>Your food: </h1>
-
 <div class="food-wrapper">
     {% for food in foods %}
     <div class="food-container">
@@ -51,6 +61,18 @@
             <h2> {{food.calories}} </h2>
             <h2> {{food.food_type}} </h2>
             <h2> {{food.id}} </h2>
+            <!-- Eat btn -->
+            {% if food.eaten == 'false' %}
+            <form action="/foods/eat/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
+                <button>Eat</button>
+            </form>
+
+            {% else %}
+            <form action="/foods/uneat/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
+                <button>Un-eat</button>
+            </form>
+
+            {% endif %}
             <div class="edit-remove-btn">
                 <button>edit</button>
                 <form action="/foods/remove/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
@@ -67,19 +89,14 @@
 
 
 
-
+<!-- Unassigned user foods -->
 <h1>Past entries</h1>
-
-
-
-
 <div class="food-wrapper">
     {% for food in unassigned_foods %}
     <div class="food-container">
         <div class="food-container-inner">
             <form action="/foods/add/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
-                <label for="day_id">add to day:</label>
-                <select name="day_id" id="day_id">
+                <select name="day_id" id="day_id" hidden>
                     {% for _day in days %}
                     <option value="{{_day.id}}" {% if _day.day==day %} selected {% endif %}> {{_day.day}}</option>
                     {% endfor %}
@@ -120,7 +137,7 @@
         <option value="fruit">fruit</option>
         <option value="drink">drink</option>
         <option value="sweets">sweets</option>
-        <option value="sweets">sweets</option>
+        <option value="sweets">snack</option>
         <option value="other">other</option>
     </select>
 

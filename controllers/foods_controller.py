@@ -33,3 +33,18 @@ def remove_food(user_id, day, food_id):
     day_id = day_repository.get_day_id(user_id, day)
     food_repository.delete(food_id)
     return redirect(f"/day/{user_id}/{day_id}")
+
+
+# EAT FOOD
+@foods_blueprint.route("/foods/eat/<user_id>/<day>/<food_id>", methods=["POST"])
+def eat_food(user_id, day, food_id):
+    day_id = day_repository.get_day_id(user_id, day)
+    food_repository.eat(True, food_id)
+    return redirect(f"/day/{user_id}/{day_id}")
+
+# UNEAT FOOD
+@foods_blueprint.route("/foods/uneat/<user_id>/<day>/<food_id>", methods=["POST"])
+def uneat_food(user_id, day, food_id):
+    day_id = day_repository.get_day_id(user_id, day)
+    food_repository.eat(False, food_id)
+    return redirect(f"/day/{user_id}/{day_id}")

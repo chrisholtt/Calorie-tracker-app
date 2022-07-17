@@ -11,6 +11,7 @@ CREATE TABLE days (
     id SERIAL PRIMARY KEY,
     day VARCHAR(255),
     target_calories INT,
+    calories_eaten INT,
     user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
