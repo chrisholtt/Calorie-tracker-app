@@ -1,5 +1,71 @@
+:root {
+    --Blue5: #03000e;
+    --Blue4: #0c0032;
+    --Blue3: #190061;
+    --Blue2: #240090;
+    --Blue1: #3500d3;
+    --Gray: #282828;
+    
+}
+
+#title {
+    font-family: 'Lobster';
+    color: white;
+    font-size: 2rem;
+    transition: 0.3s ease all;
+}
+
+#title:hover {
+    font-family: 'Lobster';
+    color: var(--Blue1);
+    font-size: 2rem;
+    transform: rotate(-5deg);
+    transition: 0.3s ease all;
+
+}
+
+nav ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+button{
+    padding: 0;
+}
+
+body {
+    background: var(--Blue5);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
 .days-wrapper{
     display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.days-wrapper a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    transition: 0.3s ease all;
+}
+
+.days-wrapper a:hover {
+    color: var(--Blue1);
+    text-decoration: none;
+    padding: 5px;
+    transition: 0.3s ease all;
 }
 
 .cals-wrapper{
@@ -32,28 +98,28 @@
 .food-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     overflow: scroll;
+    height: 250px;
 }
 
 .food-container {
-    width: 200px;
-    height: 240px;
-    border-radius: 5px;
-    background: green;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0px 5px;
+    margin: 0;
+    height: auto;
 
 }
 
-/*     display: flex;
-    flex-direction: column; */
 .food-container-inner{
-    display: flex;
+    display: flex; 
     flex-direction: column;
     width: 180px;
     height: 220px;
-    background: white;
+    background: var(--Gray);
     border-radius: 5px;
     text-align: center;
     justify-content: space-between;
@@ -65,7 +131,23 @@
     justify-content: space-between;
 }
 
+.edit-remove-btn button{
+    background: var(--Blue3);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
 .food-container h2 {
     padding: 0;
     margin: 0;
 }
+
+
+.food-bg {
+    font-size: 90px;
+    color: var(--Blue1);
+}
+

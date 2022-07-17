@@ -1,18 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>user data</h1>
-<h1>{{ user.name }}</h1>
-<h1>{{ user.id }}</h1>
-
-<!-- not working -->
-<h1>days:</h1>
-
 <div class="days-wrapper">
     {% for day in days %}
     <a href="/day/{{ user.id }}/{{ day.id }}">
         <h2> {{ day.day }} </h2>
-        <h2> {{ day.id }} </h2>
     </a>
     {% endfor %}
 </div>
@@ -52,7 +44,7 @@
 
 
 <!-- Users food -->
-<h1>Your food: </h1>
+<h1>{{day}}s food: </h1>
 <div class="food-wrapper">
     {% for food in foods %}
     <div class="food-container">
@@ -60,7 +52,21 @@
             <h2> {{food.name}} </h2>
             <h2> {{food.calories}} </h2>
             <h2> {{food.food_type}} </h2>
-            <h2> {{food.id}} </h2>
+
+            <div class="food-bg">
+                {% if food.food_type == 'main' %}
+                <i class="fa-solid fa-burger"></i>
+                {% elif food.food_type == 'fruit'%}
+                <i class="fa-solid fa-apple-whole"></i>
+                {% elif food.food_type == 'drink'%}
+                <i class="fa-solid fa-bottle-water"></i>
+                {% elif food.food_type == 'snack'%}
+                <i class="fa-solid fa-candy-cane"></i>
+                {% elif food.food_type == 'other'%}
+                <i class="fa-solid fa-circle-question"></i>
+                {% endif %}
+            </div>
+
             <!-- Eat btn -->
             {% if food.eaten == 'false' %}
             <form action="/foods/eat/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
@@ -95,6 +101,7 @@
     {% for food in unassigned_foods %}
     <div class="food-container">
         <div class="food-container-inner">
+
             <form action="/foods/add/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
                 <select name="day_id" id="day_id" hidden>
                     {% for _day in days %}
@@ -105,24 +112,66 @@
                     <i class="fa-solid fa-circle-plus"></i>
                 </button>
             </form>
+
             <h2> {{food.name}} </h2>
-            <h2> {{food.calories}} </h2>
-            <h2> {{food.food_type}} </h2>
-            <h2> {{food.id}} </h2>
+            <h4> {{food.calories}} kcals </h4>
+
+            <!-- Displaying the food type -->
+            <div class="food-bg">
+                {% if food.food_type == 'main' %}
+                <i class="fa-solid fa-burger"></i>
+                {% elif food.food_type == 'fruit'%}
+                <i class="fa-solid fa-apple-whole"></i>
+                {% elif food.food_type == 'drink'%}
+                <i class="fa-solid fa-bottle-water"></i>
+                {% elif food.food_type == 'snack'%}
+                <i class="fa-solid fa-candy-cane"></i>
+                {% elif food.food_type == 'other'%}
+                <i class="fa-solid fa-circle-question"></i>
+                {% endif %}
+            </div>
+
             <div class="edit-remove-btn">
                 <button>edit</button>
                 <form action="/foods/remove/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
                     <button>remove</button>
                 </form>
             </div>
+
+
         </div>
     </div>
     {% endfor %}
+
+    <div class="food_container">
+        <div class="food-container-inner">
+            <form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
+                <h2>Create new food:</h2>
+                <label for="name">Food name: </label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="calories">Number of kcals: </label>
+                <input type="number" id="calories" name="calories" required>
+
+                <label for="type">Food type</label>
+                <select name="food_type" id="type" required>
+                    <option value="main">meal</option>
+                    <option value="fruit">fruit</option>
+                    <option value="drink">drink</option>
+                    <option value="snack">snack</option>
+                    <option value="other">other</option>
+                </select>
+                <button>Create</button>
+            </form>
+        </div>
+    </div>
+
+
+
 </div>
 
 
-<!-- Finish this after you do days -->
-<form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
+<!-- <form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
     <br>
     <h2>Create new food:</h2>
     <label for="name">Food name: </label>
@@ -133,15 +182,17 @@
 
     <label for="type">Food type</label>
     <select name="food_type" id="type" required>
-        <option value="main">main</option>
+        <option value="main">meal</option>
         <option value="fruit">fruit</option>
         <option value="drink">drink</option>
-        <option value="sweets">sweets</option>
-        <option value="sweets">snack</option>
+        <option value="snack">snack</option>
         <option value="other">other</option>
     </select>
 
     <button>Create</button>
-</form>
+</form> -->
+
+
+
 
 {% endblock content %}
