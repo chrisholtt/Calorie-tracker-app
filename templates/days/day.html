@@ -41,22 +41,14 @@
 
 
 
-<h1>{{day}} meals</h1>
+
 
 
 
 <h1>Past entries</h1>
 
-
-
-
-
-
-
-
-
 <div class="food-wrapper">
-    {% for food in foods %}
+    {% for food in unassigned_foods %}
     <div class="food-container">
         <div class="food-container-inner">
             <form action="/foods/add/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">

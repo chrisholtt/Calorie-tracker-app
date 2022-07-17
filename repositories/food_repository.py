@@ -58,6 +58,17 @@ def select_all():
     return foods
 
 
+def unassigned_foods():
+    foods = []
+    sql = """
+    SELECT * FROM foods
+    WHERE user_id IS NULL
+    """
+    results = run_sql(sql)
+    for row in results:
+        foods.append(Food(row['name'], row['calories'], row['food_type'], row['day_id'], row['eaten'], row['id']))
+    return foods
+
 
 
 
@@ -98,3 +109,16 @@ def save_food_to_day(food):
     values = [ food.name, food.calories, food.food_type, food.eaten, food.day, food.user]
     results = run_sql(sql, values)
     food.id = results[0]['id']
+
+
+def user_foods(id, day):
+    foods = []
+    sql = "SELECT * FROM foods WHERE user_id = %s AND day_id = %s"
+    values = [id, day]
+    results = run_sql(sql, values)
+
+    if results:
+        for result in results:
+            foods.append(Food(result['name'], result['calories'], result['food_type']) ) 
+    return foods
+

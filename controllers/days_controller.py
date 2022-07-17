@@ -13,16 +13,15 @@ def days(id):
     return render_template("days/index.html", user=user, days=days)
 
 # Individual day:
-@days_blueprint.route("/day/<id>/<day>")
+@days_blueprint.route("/day/<id>/<day>/")
 def day(id, day):
     user = user_repository.select(id)
     days = day_repository.select_with_user_id(id)
     calories = day_repository.get_calories(id, day)
-    foods = food_repository.select_all()
-    print(foods)
-    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, foods=foods)
+    foods = food_repository.user_foods(id, day)
+    unassigned_foods = food_repository.unassigned_foods()
+    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods)
 
-# Calorie POST
 @days_blueprint.route("/calories/<id>/<day>", methods=["POST"])
 def target_calories(id, day):
     calories = request.form["target_calories"]
