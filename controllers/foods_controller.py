@@ -13,7 +13,8 @@ def new_food(id, day):
     food_type = request.form['food_type']
     food = Food (name, calories, food_type, False)
     food_repository.save(food)
-    return redirect(f"/day/{id}/{day}")
+    day_id = day_repository.get_day_id(id, day)
+    return redirect(f"/day/{id}/{day_id}")
 
 
 # Add food to day

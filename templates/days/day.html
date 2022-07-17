@@ -80,8 +80,8 @@
             <form action="/foods/add/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
                 <label for="day_id">add to day:</label>
                 <select name="day_id" id="day_id">
-                    {% for day in days %}
-                    <option value="{{day.id}}">{{day.day}}</option>
+                    {% for _day in days %}
+                    <option value="{{_day.id}}" {% if _day.day==day %} selected {% endif %}> {{_day.day}}</option>
                     {% endfor %}
                 </select>
                 <button>
