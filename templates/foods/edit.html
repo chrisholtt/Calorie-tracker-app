@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edit Food:</h1>
+<div class="food-wrapper">
+    <div class="food-container">
+        <div class="food-container-inner">
+            <form action="/foods/edit/add/{{user_id}}/{{food_id}}/{{day_id}}" method="POST">
+                <input name="name" type="text" placeholder="{{food.name}}">
+                <br>
+                <br>
+                <input name="calories" type="text" placeholder="{{food.calories}} kcals">
+                <br>
+                <br>
+                <select name="food_type" id="type" required>
+                    <option value="main" {% if food.food_type=="main" %} selected {% endif %}>meal</option>
+                    <option value="fruit" {% if food.food_type=="fruit" %} selected {% endif %}>fruit</option>
+                    <option value="drink" {% if food.food_type=="drink" %} selected {% endif %}>drink</option>
+                    <option value="snack" {% if food.food_type=="snack" %} selected {% endif %}>snack</option>
+                    <option value="other" {% if food.food_type=="other" %} selected {% endif %}>other</option>
+                </select>
+                <button>Update</button>
+            </form>
+
+
+
+            <div class="food-bg">
+                {% if food.food_type == 'main' %}
+                <i class="fa-solid fa-burger"></i>
+                {% elif food.food_type == 'fruit'%}
+                <i class="fa-solid fa-apple-whole"></i>
+                {% elif food.food_type == 'drink'%}
+                <i class="fa-solid fa-bottle-water"></i>
+                {% elif food.food_type == 'snack'%}
+                <i class="fa-solid fa-candy-cane"></i>
+                {% elif food.food_type == 'other'%}
+                <i class="fa-solid fa-circle-question"></i>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

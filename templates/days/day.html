@@ -50,8 +50,7 @@
     <div class="food-container">
         <div class="food-container-inner">
             <h2> {{food.name}} </h2>
-            <h2> {{food.calories}} </h2>
-            <h2> {{food.food_type}} </h2>
+            <h3> {{food.calories}} kcals</h3>
 
             <div class="food-bg">
                 {% if food.food_type == 'main' %}
@@ -70,17 +69,28 @@
             <!-- Eat btn -->
             {% if food.eaten == 'false' %}
             <form action="/foods/eat/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
-                <button>Eat</button>
+                <button class="eat-uneat-btn"><i class="fa-regular fa-circle-check" id="check-green"></i></button>
             </form>
 
             {% else %}
             <form action="/foods/uneat/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
-                <button>Un-eat</button>
+                <button class="eat-uneat-btn"><i class="fa-regular fa-circle-xmark" id="cross-red"></i></button>
             </form>
 
             {% endif %}
+
+            <!-- work on edit btn -->
             <div class="edit-remove-btn">
-                <button>edit</button>
+                <form action="/foods/edit/{{ user.id}}/{{ food.id }}" method="POST">
+                    <button>edit</button>
+                    <!-- Hidden select to pass up the day_id -->
+                    <select name="day_id" id="day_id" hidden>
+                        {% for _day in days %}
+                        <option value="{{_day.id}}" {% if _day.day==day %} selected {% endif %}> {{_day.day}}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+
                 <form action="/foods/remove/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
                     <button>remove</button>
                 </form>
@@ -89,6 +99,7 @@
     </div>
     {% endfor %}
 </div>
+
 
 
 

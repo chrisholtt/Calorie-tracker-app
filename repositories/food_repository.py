@@ -162,3 +162,13 @@ def get_eat_cals(calories, eaten_calories):
         eat_calories = calories
         return eat_calories
 
+
+
+def edit(name, calories, food_type, id):
+    sql = """
+    UPDATE foods
+    SET name = %s, calories = %s, food_type = %s
+    WHERE id = %s
+    """
+    values = [name, calories, food_type, id]
+    run_sql(sql, values)

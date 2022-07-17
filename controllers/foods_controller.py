@@ -48,3 +48,22 @@ def uneat_food(user_id, day, food_id):
     day_id = day_repository.get_day_id(user_id, day)
     food_repository.eat(False, food_id)
     return redirect(f"/day/{user_id}/{day_id}")
+
+
+# EDIT FOOD 
+@foods_blueprint.route("/foods/edit/<user_id>/<food_id>", methods=["POST"])
+def edit_food(user_id, food_id):
+    day_id = request.form["day_id"]
+    food = food_repository.select(food_id)
+    return render_template("foods/edit.html", food=food, day_id=day_id, user_id=user_id, food_id=food_id)
+    
+
+# UPDATE FOOD
+@foods_blueprint.route("/foods/edit/add/<user_id>/<food_id>/<day_id>", methods=["POST"])
+def update_food(user_id, food_id, day_id):
+    name = request.form['name']
+    calories = request.form['calories']
+    type = request.form['food_type']
+    food_repository.edit(name, calories, type, food_id)
+    return redirect(f"/day/{user_id}/{day_id}")
+    
