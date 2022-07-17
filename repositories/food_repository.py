@@ -18,11 +18,11 @@ from models.food import Food
 
 def save(food):
     sql = """
-    INSERT INTO foods (name, calories, food_type)
-    VALUES ( %s, %s, %s)
+    INSERT INTO foods (name, calories, food_type, eaten)
+    VALUES ( %s, %s, %s, %s)
     RETURNING *
     """
-    values = [ food.name, food.calories, food.food_type]
+    values = [ food.name, food.calories, food.food_type, food.eaten]
     results = run_sql(sql, values)
     food.id = results[0]['id']
 
@@ -80,11 +80,7 @@ def select(id):
 
     if results is not None:
         result = results[0]
-        food = Food(result['name'], result['calories'], result['food_type'] )
-        food.id = result['id']
-        food.day = result['day_id']
-        food.user = result['user_id']
-        food.eaten = result['eaten']
+        food = Food(result['name'], result['calories'], result['food_type'], result['eaten'] )
     return food
     
 
@@ -100,25 +96,25 @@ def select(id):
 
 
 
-def save_food_to_day(food):
+def save_food_to_day(food, day_id, user_id):
     sql = """
     INSERT INTO foods (name, calories, food_type, eaten, day_id, user_id)
     VALUES ( %s, %s, %s, %s, %s, %s)
     RETURNING *
     """
-    values = [ food.name, food.calories, food.food_type, food.eaten, food.day, food.user]
+    values = [ food.name, food.calories, food.food_type, food.eaten, day_id, user_id]
     results = run_sql(sql, values)
-    food.id = results[0]['id']
+    # food.id = results[0]['id']
 
 
-def user_foods(id, day):
+def user_foods(user_id, day_id):
     foods = []
     sql = "SELECT * FROM foods WHERE user_id = %s AND day_id = %s"
-    values = [id, day]
+    values = [user_id, day_id]
     results = run_sql(sql, values)
 
     if results:
         for result in results:
-            foods.append(Food(result['name'], result['calories'], result['food_type']) ) 
+            foods.append(Food(result['name'], result['calories'], result['food_type'], result['day_id'], result['eaten'], result['id']) ) 
     return foods
 

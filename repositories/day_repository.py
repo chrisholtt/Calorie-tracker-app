@@ -59,13 +59,23 @@ def set_target_calories(calories, id, day):
     run_sql(sql, values)
 
 
-def get_calories(id, day):
+def get_calories(user_id, id):
     calories = None
-    sql = "SELECT target_calories FROM days WHERE user_id = %s AND day = %s"
-    values = [id, day]
+    sql = "SELECT target_calories FROM days WHERE user_id = %s AND id = %s"
+    values = [user_id, id]
     results = run_sql(sql, values)
 
     if results:
         calories = results[0]
         return calories
 
+
+def select_day(day_id):
+    day = None
+    sql = "SELECT day FROM days WHERE id = %s"
+    values = [day_id]
+    results = run_sql(sql, values)
+
+    if results:
+        day = results[0]['day']
+        return day

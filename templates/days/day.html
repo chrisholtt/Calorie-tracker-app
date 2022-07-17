@@ -10,8 +10,9 @@
 
 <div class="days-wrapper">
     {% for day in days %}
-    <a href="/day/{{ user.id }}/{{ day.day }}">
+    <a href="/day/{{ user.id }}/{{ day.id }}">
         <h2> {{ day.day }} </h2>
+        <h2> {{ day.id }} </h2>
     </a>
     {% endfor %}
 </div>
@@ -46,6 +47,9 @@
 
 
 <h1>Past entries</h1>
+
+
+
 
 <div class="food-wrapper">
     {% for food in unassigned_foods %}

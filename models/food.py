@@ -1,5 +1,5 @@
 class Food:
-    def __init__(self, name, calories, food_type, day=None, eaten=False, id=None):
+    def __init__(self, name, calories, food_type, eaten, day=None, id=None):
         self.name = name
         self.calories = calories
         self.food_type = food_type

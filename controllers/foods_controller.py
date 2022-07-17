@@ -11,19 +11,21 @@ def new_food(id, day):
     name = request.form['name']
     calories = request.form['calories']
     food_type = request.form['food_type']
-    food = Food (name, calories, food_type)
+    food = Food (name, calories, food_type, False)
     food_repository.save(food)
     return redirect(f"/day/{id}/{day}")
 
 
 
-users_foods = None
+
 # Add food to day
 @foods_blueprint.route("/foods/add/<user_id>/<day>/<food_id>", methods=["POST"])
 def add_food_to_day(user_id, food_id, day):
     food = food_repository.select(food_id)
-    food.day = request.form['day_id']
-    food_repository.save_food_to_day(food)
+    day_id = request.form['day_id']
+    user = user_id
+    # finish here
+    food_repository.save_food_to_day(food, day_id, user)
     return redirect(f"/day/{user_id}/{day}")
 
 
