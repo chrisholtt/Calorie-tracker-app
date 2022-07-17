@@ -41,6 +41,28 @@
 </div>
 
 
+<h1>Your food: </h1>
+
+<div class="food-wrapper">
+    {% for food in foods %}
+    <div class="food-container">
+        <div class="food-container-inner">
+            <h2> {{food.name}} </h2>
+            <h2> {{food.calories}} </h2>
+            <h2> {{food.food_type}} </h2>
+            <h2> {{food.id}} </h2>
+            <div class="edit-remove-btn">
+                <button>edit</button>
+                <form action="/foods/remove/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
+                    <button>remove</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
 
 
 
@@ -72,7 +94,9 @@
             <h2> {{food.id}} </h2>
             <div class="edit-remove-btn">
                 <button>edit</button>
-                <button>remove</button>
+                <form action="/foods/remove/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
+                    <button>remove</button>
+                </form>
             </div>
         </div>
     </div>

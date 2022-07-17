@@ -79,3 +79,14 @@ def select_day(day_id):
     if results:
         day = results[0]['day']
         return day
+
+
+def get_day_id(id, day):
+    day_id = None
+    sql = "SELECT id FROM days WHERE user_id = %s AND day = %s"
+    values = [id, day]
+    results = run_sql(sql, values)
+
+    if results:
+        day_id = results[0]['id']
+        return day_id
