@@ -8,8 +8,6 @@ days_blueprint = Blueprint("days", __name__)
 #  INDEX 
 @days_blueprint.route("/days/<id>")
 def days(id):
-    user = user_repository.select(id)
-    days = day_repository.select_with_user_id(id)
     first_day_id = day_repository.get_first_day_id(id)
     print(first_day_id)
     return redirect(f"/day/{id}/{first_day_id}")

@@ -5,7 +5,11 @@
     --Blue2: #240090;
     --Blue1: #3500d3;
     --Gray: #282828;
-    
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .get-started-btn {
@@ -102,6 +106,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50vw;
 }
 
 .cals{

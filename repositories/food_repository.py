@@ -6,17 +6,6 @@ from models.user import User
 from models.food import Food
 
 
-
-
-# def save_name_and_calories(name, calories, user_id, type):
-#     sql = """
-#     INSERT INTO foods (name, calories, user_id, type)
-#     VALUES (%s, %s, %s, %s)
-#     RETURNING *
-#     """
-#     values = [name, calories, user_id, type]
-#     results = run_sql(sql, values)
-
 def save(food):
     sql = """
     INSERT INTO foods (name, calories, food_type, eaten)
@@ -38,20 +27,6 @@ def delete(id):
     sql = "DELETE FROM foods WHERE id = %s"
     values = [id]
     run_sql(sql, values)
-
-
-
-
-# def select_all():
-#     foods = []
-#     sql = """
-#     SELECT id, name, calories, food_type FROM foods
-#     """
-#     results = run_sql(sql)
-#     for row in results:
-#         foods.append(Food(row['name'], row['calories'], row['food_type']))
-#     return foods
-
 
 
 def select_all():
@@ -91,17 +66,6 @@ def select(id):
     return food
     
 
-# def add_food_to_day(food):
-#     sql = """
-#     UPDATE foods SET (day_id, user_id) = (%s, %s)
-#     WHERE id = %s
-#     RETURNING *
-#     """
-#     values = [day_id, user_id, food_id]
-#     result = run_sql(sql, values)
-#     return result
-
-
 
 def save_food_to_day(food, day_id, user_id):
     sql = """
@@ -111,7 +75,6 @@ def save_food_to_day(food, day_id, user_id):
     """
     values = [ food.name, food.calories, food.food_type, food.eaten, day_id, user_id]
     results = run_sql(sql, values)
-    # food.id = results[0]['id']
 
 
 def user_foods(user_id, day_id):
@@ -181,14 +144,14 @@ def search(search):
     found_items = []
     sql = """
     SELECT * FROM foods 
-    WHERE name LIKE '%%s%%'
+    WHERE UPPER(name) LIKE UPPER(%s)
     """
-    values = [search]
+    values = [f"%{search}%"]
     results = run_sql(sql, values)
 
     if results:
+        print(results)
         for row in results:
-            found_items.append(Food(row['name'], row['calories'], row['food_type'], row['eaten']))
+            if not row['user_id']:
+                found_items.append(Food(row['name'], row['calories'], row['food_type'], row['eaten'], row["day_id"], row['id']))
         return found_items
-
-    return"not found"

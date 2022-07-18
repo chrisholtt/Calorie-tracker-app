@@ -23,7 +23,6 @@ def add_food_to_day(user_id, food_id, day):
     food = food_repository.select(food_id)
     day_id = request.form['day_id']
     user = user_id
-    # finish here
     food_repository.save_food_to_day(food, day_id, user)
     return redirect(f"/day/{user_id}/{day_id}")
 
@@ -82,6 +81,5 @@ def search(id, days_id):
     eaten_calories = food_repository.get_eaten_cals(id, days_id)
     eat_calories = food_repository.get_eat_cals(calories, eaten_calories)
     foods = food_repository.user_foods(id, days_id)
-    unassigned_foods = results
-    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id)
+    return render_template("foods/results.html", day=day, user=user, days=days, calories=calories, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id, results=results)
     
