@@ -91,6 +91,14 @@ body {
     justify-content: space-between;
 }
 
+.eat-text {
+    color: green;
+}
+
+.ate-text{
+    color: red;
+}
+
 .calorie-btn{
     width: 200px;
 }
@@ -167,4 +175,21 @@ body {
 #cross-red {
     color: red;
     font-size: 1.4rem;
+}
+
+
+.selected-day{
+    color: var(--Blue1);
+}
+
+.add-food-btn{
+    background: none;
+    border: none;
+}
+
+.add-food-btn i{
+    font-size: 1.4rem;
+    /* color: var(--Blue1); */
+    color: white;
+    cursor: pointer;
 }

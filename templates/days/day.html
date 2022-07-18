@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="days-wrapper">
-    {% for day in days %}
-    <a href="/day/{{ user.id }}/{{ day.id }}">
-        <h2> {{ day.day }} </h2>
+    {% for _day in days %}
+    <a href="/day/{{ user.id }}/{{ _day.id }}">
+        <h2 class={% if _day.day==day %} "selected-day" {% endif %}> {{_day.day}} </h2>
     </a>
     {% endfor %}
 </div>
@@ -27,15 +27,15 @@
         </div>
         <div class="ate-and-eat-text">
             {% if eaten_calories %}
-            <h3>Ate: {{ eaten_calories }}kcals</h3>
+            <h3 class="ate-text">Ate: {{ eaten_calories }}kcals</h3>
             {% else %}
-            <h3>Ate: 0 kcals</h3>
+            <h3 class="ate-text">Ate: 0 kcals</h3>
             {% endif %}
 
             {% if calories %}
-            <h3>Eat: {{ eat_calories }}</h3>
+            <h3 class="eat-text">Eat: {{ eat_calories }}</h3>
             {% else %}
-            <h3>Eat: 0</h3>
+            <h3 class="eat-text">Eat: 0</h3>
             {% endif %}
 
         </div>
@@ -119,7 +119,7 @@
                     <option value="{{_day.id}}" {% if _day.day==day %} selected {% endif %}> {{_day.day}}</option>
                     {% endfor %}
                 </select>
-                <button>
+                <button class="add-food-btn">
                     <i class="fa-solid fa-circle-plus"></i>
                 </button>
             </form>

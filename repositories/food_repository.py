@@ -116,7 +116,10 @@ def save_food_to_day(food, day_id, user_id):
 
 def user_foods(user_id, day_id):
     foods = []
-    sql = "SELECT * FROM foods WHERE user_id = %s AND day_id = %s"
+    sql = """
+    SELECT * FROM foods WHERE user_id = %s AND day_id = %s
+    ORDER BY eaten DESC
+    """
     values = [user_id, day_id]
     results = run_sql(sql, values)
 
