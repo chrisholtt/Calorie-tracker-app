@@ -6,10 +6,10 @@
     <div class="food-container">
         <div class="food-container-inner">
             <form action="/foods/edit/add/{{user_id}}/{{food_id}}/{{day_id}}" method="POST">
-                <input name="name" type="text" placeholder="{{food.name}}">
+                <input name="name" type="text" placeholder="{{food.name}}" value="{{ food.name }}">
                 <br>
                 <br>
-                <input name="calories" type="text" placeholder="{{food.calories}} kcals">
+                <input name="calories" type="text" placeholder="{{food.calories}} kcals" value="{{food.calories}}">
                 <br>
                 <br>
                 <select name="food_type" id="type" required>

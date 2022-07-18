@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS reminders;
 DROP TABLE IF EXISTS foods;
 DROP TABLE IF EXISTS days;
 DROP TABLE IF EXISTS users;
@@ -25,3 +26,9 @@ CREATE TABLE foods (
   user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE reminders (
+  id SERIAL PRIMARY KEY,
+  reminder VARCHAR(255),
+  day_id INT REFERENCES days(id) ON DELETE CASCADE,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE
+)

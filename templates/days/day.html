@@ -113,10 +113,15 @@
         <!-- ADD NOTES HERE -->
         <div class="notes-wrapper">
             <h1>{{day}}s reminders:</h1>
-            <form action="">
-                <input type="text" placeholder="Enter a reminder" id="search-bar">
+            <form action="/reminder/{{user.id}}/{{ days_id }}" method="POST">
+                <input type="text" placeholder="Enter a reminder" id="search-bar" name="reminder">
                 <button>Confirm</button>
             </form>
+            {% if reminders %}
+            {% for reminder in reminders %}
+            <h1>{{reminder}}</h1>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 
