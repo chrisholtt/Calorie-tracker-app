@@ -67,3 +67,21 @@ def update_food(user_id, food_id, day_id):
     food_repository.edit(name, calories, type, food_id)
     return redirect(f"/day/{user_id}/{day_id}")
     
+
+# SEARCH FOOD:
+@foods_blueprint.route("/foods/search/<id>/<days_id>", methods=["POST"])
+def search(id, days_id):
+    search_value = request.form['search']
+    results = food_repository.search(search_value)
+    print(results)
+    # Now returning back to a duplicate of the main day route:
+    user = user_repository.select(id)
+    day = day_repository.select_day(days_id)
+    days = day_repository.select_with_user_id(id)
+    calories = day_repository.get_calories(id, days_id)
+    eaten_calories = food_repository.get_eaten_cals(id, days_id)
+    eat_calories = food_repository.get_eat_cals(calories, eaten_calories)
+    foods = food_repository.user_foods(id, days_id)
+    unassigned_foods = results
+    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id)
+    

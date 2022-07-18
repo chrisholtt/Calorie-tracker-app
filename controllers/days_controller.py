@@ -10,7 +10,10 @@ days_blueprint = Blueprint("days", __name__)
 def days(id):
     user = user_repository.select(id)
     days = day_repository.select_with_user_id(id)
-    return render_template("days/index.html", user=user, days=days)
+    first_day_id = day_repository.get_first_day_id(id)
+    print(first_day_id)
+    return redirect(f"/day/{id}/{first_day_id}")
+    # return render_template("days/index.html", user=user, days=days)
 
 # Individual day:
 @days_blueprint.route("/day/<id>/<day_id>/")
@@ -18,12 +21,13 @@ def day(id, day_id):
     user = user_repository.select(id)
     day = day_repository.select_day(day_id)
     days = day_repository.select_with_user_id(id)
+    days_id = day_id
     calories = day_repository.get_calories(id, day_id)
     eaten_calories = food_repository.get_eaten_cals(id, day_id)
     eat_calories = food_repository.get_eat_cals(calories, eaten_calories)
     foods = food_repository.user_foods(id, day_id)
     unassigned_foods = food_repository.unassigned_foods()
-    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories)
+    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id)
 
 
 # Set cals

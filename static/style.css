@@ -8,6 +8,18 @@
     
 }
 
+.get-started-btn {
+    width: 200px;
+    height: 50px;
+    border: none;
+    background: var(--Blue1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.get-started-btn a{
+    color: white;
+}
+
 #title {
     font-family: 'Lobster';
     color: white;
@@ -44,7 +56,25 @@ body {
     background: var(--Blue5);
     color: white;
     font-family: 'Roboto', sans-serif;
+}
 
+.columns-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.column-right {
+    width: 45vw;
+    margin-right: 1vw;
+}
+.column-left {
+    width: 45vw;
+    margin-left: 1vw;
+}
+.create-food-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .days-wrapper{
@@ -81,7 +111,7 @@ body {
     justify-content: center;
     border: 2px solid white;
     border-radius: 5px;
-    width: 400px;
+    width: 50vw;
 }
 
 .ate-and-eat-text {
@@ -103,29 +133,74 @@ body {
     width: 200px;
 }
 
+
 .food-wrapper {
+    overflow: scroll;
+    height: 100vh;
+    width: 50vw;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    align-items: flex-start;
+}
+
+.food-wrapper-right {
     overflow: scroll;
-    height: 250px;
+    width: 45vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 50%;
 }
 
 .food-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px 5px;
+    margin: 0;
+    height: auto;
+}
+
+.user-food-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0px 5px;
     margin: 0;
     height: auto;
-
 }
 
 .food-container-inner{
     display: flex; 
     flex-direction: column;
     width: 180px;
+    height: 220px;
+    background: var(--Gray);
+    border-radius: 5px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.food-container-ate{
+    display: flex; 
+    flex-direction: column;
+    width: 180px;
+    border: 2px solid red;
+    height: 220px;
+    background: var(--Gray);
+    border-radius: 5px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.food-container-eat{
+    display: flex; 
+    flex-direction: column;
+    width: 180px;
+    border: 2px solid green;
     height: 220px;
     background: var(--Gray);
     border-radius: 5px;
@@ -192,4 +267,10 @@ body {
     /* color: var(--Blue1); */
     color: white;
     cursor: pointer;
+}
+
+.search-bar-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,3 +1,4 @@
+from unittest import result
 from db.run_sql import run_sql
 from repositories import user_repository
 
@@ -90,3 +91,20 @@ def get_day_id(id, day):
     if results:
         day_id = results[0]['id']
         return day_id
+
+
+def get_first_day_id(user_id):
+    day_id = None
+    sql = """
+    SELECT id FROM days
+    WHERE user_id = %s
+    """
+    values = [user_id]
+
+    results = run_sql(sql, values)
+
+    if results:
+        for row in results:
+            day_id = row['id']
+            return day_id
+

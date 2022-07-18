@@ -175,3 +175,20 @@ def edit(name, calories, food_type, id):
     """
     values = [name, calories, food_type, id]
     run_sql(sql, values)
+
+
+def search(search):
+    found_items = []
+    sql = """
+    SELECT * FROM foods 
+    WHERE name LIKE '%%s%%'
+    """
+    values = [search]
+    results = run_sql(sql, values)
+
+    if results:
+        for row in results:
+            found_items.append(Food(row['name'], row['calories'], row['food_type'], row['eaten']))
+        return found_items
+
+    return"not found"
