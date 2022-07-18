@@ -5,6 +5,8 @@
     --Blue2: #240090;
     --Blue1: #3500d3;
     --Gray: #282828;
+    --Gray1:rgb(201, 201, 201);
+    --Gray0:rgb(232, 232, 232);
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -26,7 +28,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 #title {
     font-family: 'Lobster';
-    color: white;
+    color: var(--Blue1);
     font-size: 2rem;
     transition: 0.3s ease all;
 }
@@ -35,7 +37,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Lobster';
     color: var(--Blue1);
     font-size: 2rem;
-    transform: rotate(-5deg);
+    transform: rotate(-3deg);
     transition: 0.3s ease all;
 
 }
@@ -45,10 +47,11 @@ nav ul {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    list-style-type: none;
 }
 
 nav ul li a{
-    color: white;
+    color: var(--Blue1);
     text-decoration: none;
 }
 
@@ -57,8 +60,8 @@ button{
 }
 
 body {
-    background: var(--Blue5);
-    color: white;
+    background: var(--Gray1);
+    color: var(--Gray);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -74,6 +77,7 @@ body {
 .column-left {
     width: 45vw;
     margin-left: 1vw;
+    text-align: center;
 }
 .create-food-wrapper{
     display: flex;
@@ -141,30 +145,39 @@ body {
 
 .food-wrapper {
     overflow: scroll;
-    height: 100vh;
+    margin-top: 20px;
+    height: 240px;
     width: 50vw;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    /* align-items: flex-start; */
 }
 
 .food-wrapper-right {
     overflow: scroll;
     width: 45vw;
+    height: 750px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 50%;
+    border: 2px solid white;
+    border-radius: 5px;
+    /* border-bottom: 2px solid white;
+    border-top: 2px solid white; */
 }
 
 .food-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 5px;
+    padding: 15px 10px;
     margin: 0;
     height: auto;
 }
@@ -178,39 +191,43 @@ body {
     height: auto;
 }
 
+/*  */
 .food-container-inner{
     display: flex; 
     flex-direction: column;
     width: 180px;
     height: 220px;
-    background: var(--Gray);
+    background: var(--Gray0);
     border-radius: 5px;
     text-align: center;
     justify-content: space-between;
+    box-shadow: 3px 3px 5px #343434;
 }
 
 .food-container-ate{
     display: flex; 
     flex-direction: column;
-    width: 180px;
     border: 2px solid red;
+    width: 180px;
     height: 220px;
-    background: var(--Gray);
+    background: var(--Gray0);
     border-radius: 5px;
     text-align: center;
     justify-content: space-between;
+    box-shadow: 3px 3px 5px #343434;
 }
 
 .food-container-eat{
     display: flex; 
     flex-direction: column;
-    width: 180px;
     border: 2px solid green;
+    width: 180px;
     height: 220px;
-    background: var(--Gray);
+    background: var(--Gray0);
     border-radius: 5px;
     text-align: center;
     justify-content: space-between;
+    box-shadow: 3px 3px 5px #343434;
 }
 
 .edit-remove-btn{
@@ -220,7 +237,7 @@ body {
 }
 
 .edit-remove-btn button{
-    background: var(--Blue3);
+    background: var(--Gray);
     border-radius: 5px;
     border: none;
     color: white;
@@ -270,12 +287,32 @@ body {
 .add-food-btn i{
     font-size: 1.4rem;
     /* color: var(--Blue1); */
-    color: white;
+    color: var(--Gray);
     cursor: pointer;
 }
 
 .search-bar-wrapper{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#search-bar{
+    width: 150px;
+    border-radius: 20px;
+    border: none;
+}
+
+.magnifying-glass-btn{
+    background: none;
+    border: none;
+}
+
+.notes-wrapper{
+    margin-top: 20px;
+    width: 50vw;
+    height: 380px;
+    border: 2px solid white;
+    border-radius: 5px;
 }

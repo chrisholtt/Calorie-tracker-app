@@ -18,6 +18,8 @@
                     <option value="drink" {% if food.food_type=="drink" %} selected {% endif %}>drink</option>
                     <option value="snack" {% if food.food_type=="snack" %} selected {% endif %}>snack</option>
                     <option value="other" {% if food.food_type=="other" %} selected {% endif %}>other</option>
+                    <option value="supplement" {% if food.food_type=="supplement" %} selected {% endif %}>supplement
+                    </option>
                 </select>
                 <button>Update</button>
             </form>
@@ -35,6 +37,8 @@
                 <i class="fa-solid fa-candy-cane"></i>
                 {% elif food.food_type == 'other'%}
                 <i class="fa-solid fa-circle-question"></i>
+                {% elif food.food_type == 'supplement'%}
+                <i class="fa-solid fa-syringe"></i>
                 {% endif %}
             </div>
         </div>
