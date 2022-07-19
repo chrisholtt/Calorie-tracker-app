@@ -117,10 +117,45 @@
                 <input type="text" placeholder="Enter a reminder" id="search-bar" name="reminder">
                 <button>Confirm</button>
             </form>
+            <!-- REMINDERS -->
             {% if reminders %}
-            {% for reminder in reminders %}
-            <h1>{{reminder}}</h1>
-            {% endfor %}
+
+            <div class="reminder-wrapper">
+                <ul>
+                    {% for reminder in reminders %}
+                    <li>
+                        <h2 id="reminder-font">{{ reminder.reminder }}</h2>
+
+                        <!--reminder not completed -->
+                        {% if reminder.completed == 'false' %}
+                        <form action="/reminder/mark-completed/{{ user.id }}/{{ days_id }}/{{ reminder.id }}"
+                            method="POST">
+                            <button class="eat-uneat-btn"><i class="fa-regular fa-circle-check"
+                                    id="check-green"></i></button>
+                        </form>
+                        {%elif reminder.completed == 'true'%}
+                        <!-- reminder completed -->
+                        <form action="/reminder/mark-uncompleted/{{ user.id }}/{{ days_id }}/{{ reminder.id }}"
+                            method="POST">
+                            <button class="eat-uneat-btn"><i class="fa-regular fa-circle-xmark"
+                                    id="cross-red"></i></button>
+                        </form>
+                        {% endif %}
+
+                        <form action="/reminder/edit/{{ user.id }}/{{ days_id }}/{{ reminder.id }}" method="GET">
+                            <button>edit</button>
+                        </form>
+                        <form action="/reminder/delete/{{user.id}}/{{ days_id }}/{{ reminder.id }}" method="POST">
+                            <button>remove</button>
+                        </form>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% elif not reminders %}
+            <h3>No reminders set for {{day}}...</h3>
             {% endif %}
         </div>
     </div>

@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template, redirect, Blueprint, request
 from repositories import user_repository, day_repository, food_repository, reminder_repository
 from models.user import User
@@ -38,9 +39,41 @@ def target_calories(id, day):
     return redirect(f"/day/{id}/{day_id}")
 
 
+
+
+# REMINDERS:::
+
 # SET reminder:
 @days_blueprint.route("/reminder/<id>/<day_id>", methods=["POST"])
 def set_reminder(id, day_id):
     reminder = request.form['reminder']
-    reminder_repository.set_reminder(reminder, id, day_id)
+    reminder_repository.set_reminder(reminder, False, id, day_id)
     return redirect(f"/day/{id}/{day_id}/")
+
+# MARK COMPLETED:
+@days_blueprint.route("/reminder/mark-completed/<user_id>/<day_id>/<id>", methods=["POST"])
+def complete_reminder(user_id, day_id, id):
+    reminder_repository.complete(True, id)
+    return redirect(f"/day/{user_id}/{day_id}")
+
+# MARK UNCOMPLETED:
+@days_blueprint.route("/reminder/mark-uncompleted/<user_id>/<day_id>/<id>", methods=["POST"])
+def uncomplete_reminder(user_id, day_id, id):
+    reminder_repository.complete(False, id)
+    return redirect(f"/day/{user_id}/{day_id}")
+
+
+
+# DELETE REMINDER:
+@days_blueprint.route("/reminder/delete/<user_id>/<day_id>/<id>", methods=["POST"])
+def delete(user_id, day_id, id):
+    reminder_repository.delete(id)
+    return redirect(f"/day/{user_id}/{day_id}")
+
+
+
+# EDIT REMINDER PAGE:
+@days_blueprint.route("/reminder/edit/<user_id>/<day_id>/<id>", methods=["GET"])
+def edit_page(user_id, day_id, id):
+    reminder = reminder_repository.select(id)
+    return render_template("reminders/edit.html", user_id=user_id, day_id=day_id, reminder=reminder)

@@ -29,6 +29,7 @@ CREATE TABLE foods (
 CREATE TABLE reminders (
   id SERIAL PRIMARY KEY,
   reminder VARCHAR(255),
+  completed VARCHAR(255),
   day_id INT REFERENCES days(id) ON DELETE CASCADE,
   user_id INT REFERENCES users(id) ON DELETE CASCADE
 )
