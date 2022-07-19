@@ -7,12 +7,125 @@
     --Gray: #282828;
     --Gray1:rgb(201, 201, 201);
     --Gray0:rgb(232, 232, 232);
+
+    --Red: #ffadad;
+    --Orange: #ffd6a5;
+    --Yellow: #fdffb6;
+    --Green: #caffbf;
+    --Cyan: #9bf6ff;
+    --Blue: #a0c4ff;
+    --Purple: #bdb2ff;
+    --White: #e1e1e1;
+    --Grey: #403d39;
+    
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+
+/* PROGRESS BAR */
+.progress-wrapper{
+    width: 50vw;
+    margin-top: 20px;
+}
+
+.progress-bar{
+    background: var(--Green);
+    height: 20px;
+    border-radius: 20px;
+}
+
+.progress0{
+    height: 20px;
+    width: 0px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress10{
+    height: 20px;
+    width: 90px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress20{
+    height: 20px;
+    width: 180px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress30{
+    height: 20px;
+    width: 270px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress40{
+    height: 20px;
+    width: 360px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress50{
+    height: 20px;
+    width: 450px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress60{
+    height: 20px;
+    width: 540px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress70{
+    height: 20px;
+    width: 630px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress80{
+    height: 20px;
+    width: 720px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress90{
+    height: 20px;
+    width: 810px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
+.progress100{
+    height: 20px;
+    width: 900px;
+    background: var(--Red);
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+
 
 
 .get-started-btn {
@@ -63,6 +176,10 @@ nav ul {
     font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
+#reminder-font-completed{
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    text-decoration: line-through;
+}
 
 nav ul li a{
     color: var(--Blue1);

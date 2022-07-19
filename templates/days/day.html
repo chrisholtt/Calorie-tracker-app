@@ -48,6 +48,12 @@
             </div>
         </div>
 
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress{{progress}}"></div>
+            </div>
+        </div>
+
         <!-- Users food -->
         <div class="food-wrapper">
             {% if not foods %}
@@ -124,10 +130,10 @@
                 <ul>
                     {% for reminder in reminders %}
                     <li>
-                        <h2 id="reminder-font">{{ reminder.reminder }}</h2>
 
                         <!--reminder not completed -->
                         {% if reminder.completed == 'false' %}
+                        <h2 id="reminder-font">{{ reminder.reminder }}</h2>
                         <form action="/reminder/mark-completed/{{ user.id }}/{{ days_id }}/{{ reminder.id }}"
                             method="POST">
                             <button class="eat-uneat-btn"><i class="fa-regular fa-circle-check"
@@ -135,6 +141,7 @@
                         </form>
                         {%elif reminder.completed == 'true'%}
                         <!-- reminder completed -->
+                        <h2 id="reminder-font-completed">{{ reminder.reminder }}</h2>
                         <form action="/reminder/mark-uncompleted/{{ user.id }}/{{ days_id }}/{{ reminder.id }}"
                             method="POST">
                             <button class="eat-uneat-btn"><i class="fa-regular fa-circle-xmark"
@@ -142,11 +149,8 @@
                         </form>
                         {% endif %}
 
-                        <form action="/reminder/edit/{{ user.id }}/{{ days_id }}/{{ reminder.id }}" method="GET">
-                            <button>edit</button>
-                        </form>
                         <form action="/reminder/delete/{{user.id}}/{{ days_id }}/{{ reminder.id }}" method="POST">
-                            <button>remove</button>
+                            <button><i class="fa-solid fa-trash-can"></i></button>
                         </form>
 
                     </li>

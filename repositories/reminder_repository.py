@@ -15,6 +15,7 @@ def get_reminders(user_id, day_id):
     sql = """
     SELECT * FROM reminders
     WHERE user_id = %s AND day_id = %s
+    ORDER BY completed
     """
 
     values = [user_id, day_id]
@@ -47,7 +48,7 @@ def select(id):
 
     if result:
         result = result[0]
-        reminder = Reminder(result['reminder'], result['id'])
+        reminder = Reminder(result['reminder'], result['completed'], result['id'])
         return reminder
 
 

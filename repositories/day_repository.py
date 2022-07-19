@@ -108,3 +108,35 @@ def get_first_day_id(user_id):
             day_id = row['id']
             return day_id
 
+
+def get_progress(calories, eaten_cals):
+    ratio = 0
+    percentage = (eaten_cals / calories) * 100
+
+    if percentage <= 0:
+        ratio = 0
+    elif percentage <= 10:
+        ratio = 10
+    elif percentage <= 20:
+        ratio = 20
+    elif percentage <= 30:
+        ratio = 30
+    elif percentage <= 40:
+        ratio = 40
+    elif percentage <= 50:
+        ratio = 50
+    elif percentage <= 60:
+        ratio = 60
+    elif percentage <= 70:
+        ratio = 70
+    elif percentage <= 80:
+        ratio = 80
+    elif percentage <= 90:
+        ratio = 90
+    elif percentage <= 100:
+        ratio = 100
+    elif percentage > 100:
+        ratio = 100
+
+    return ratio
+    

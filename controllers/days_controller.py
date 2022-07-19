@@ -27,7 +27,8 @@ def day(id, day_id):
     foods = food_repository.user_foods(id, day_id)
     unassigned_foods = food_repository.unassigned_foods()
     reminders = reminder_repository.get_reminders(id, day_id)
-    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id, reminders=reminders)
+    progress = day_repository.get_progress(calories, eaten_calories)
+    return render_template("days/day.html", day=day, user=user, days=days, calories=calories, unassigned_foods=unassigned_foods, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id, reminders=reminders, progress=progress)
 
 
 # Set cals
@@ -71,9 +72,3 @@ def delete(user_id, day_id, id):
     return redirect(f"/day/{user_id}/{day_id}")
 
 
-
-# EDIT REMINDER PAGE:
-@days_blueprint.route("/reminder/edit/<user_id>/<day_id>/<id>", methods=["GET"])
-def edit_page(user_id, day_id, id):
-    reminder = reminder_repository.select(id)
-    return render_template("reminders/edit.html", user_id=user_id, day_id=day_id, reminder=reminder)
