@@ -458,3 +458,35 @@ button{
     border: 2px solid white;
     border-radius: 5px;
 }
+
+
+.user-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--White);
+    border-radius: 7px;
+    padding: 5px;
+    margin-top: 30px;
+}
+
+.user-inputs{
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid var(--Grey);
+    background: rgb(220, 220, 255);
+    margin-top: 5px;
+}
+
+#black-btn{
+    background: var(--Grey);
+}
+
+.user-page{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+}

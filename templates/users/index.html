@@ -5,7 +5,6 @@
 
 {% if not users %}
 <h1>Create a user:</h1>
-
 <form action="/users/new" method="POST">
     <label for="name">Enter your name</label>
     <input type="text" id="name" name="name">
@@ -14,18 +13,21 @@
 
 {% else %}
 
-{% for user in users %}
-<a href="/days/{{user.id }}">
-
-    <h1>{{ user.name }}</h1>
-</a>
-{% endfor %}
-
-<a href="/users/signup">Create another user</a>
-
+<div class="user-page">
+    {% for user in users %}
+    <form action="/days/{{user.id }}">
+        <div class="user-wrapper">
+            <input type="text" class="user-inputs" value={{user.name}}>
+            <input type="password" class="user-inputs" placeholder="Password">
+            <button class="user-inputs" id="black-btn">Login</button>
+            <a href="/">
+                <h5>Forgotten password?</h5>
+            </a>
+        </div>
+    </form>
+    {% endfor %}
+    <br>
+    <a href="/users/signup"><button>Create New Account</button></a>
+</div>
 {% endif %}
 {% endblock content %}
-
-
-
-<!-- If users display: -->
