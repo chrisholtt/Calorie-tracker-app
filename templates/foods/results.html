@@ -7,18 +7,26 @@
     <!-- LEFT COLUMN -->
     <div class="column-left">
 
+        <h1>DAYS </h1>
+        <div class="days-wrapper">
+            {% for _day in days %}
+            <a href="/day/{{ user.id }}/{{ _day.id }}">
+                <h2 class={% if _day.day==day %} "selected-day" {% endif %}> {{_day.day}} </h2>
+            </a>
+            {% endfor %}
+        </div>
         <div class="cals-wrapper">
             <div class="cals">
                 <div>
                     <!-- Checking to see if there is a calorie value for that day -->
                     {% if calories %}
-                    <h1>Target: {{ calories }}</h1>
+                    <h1>Target: {{ calories }} kcals</h1>
                     {% else %}
                     <h1>Enter kcal for {{ day }}</h1>
                     {% endif %}
 
                     <form action="/calories/{{ user.id }}/{{ day }}" method="POST">
-                        <input type="number" placeholder="Calories for {{ day }}" min="1" max="10000"
+                        <input id="search-bar" type="number" placeholder="Calories for {{ day }}" min="1" max="10000"
                             class="calorie-btn" name="target_calories" required>
                         <button>Confirm</button>
                     </form>
@@ -39,17 +47,19 @@
                 </div>
             </div>
         </div>
-        <div class="days-wrapper">
-            {% for _day in days %}
-            <a href="/day/{{ user.id }}/{{ _day.id }}">
-                <h2 class={% if _day.day==day %} "selected-day" {% endif %}> {{_day.day}} </h2>
-            </a>
-            {% endfor %}
+
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress{{progress}}"></div>
+            </div>
         </div>
 
         <!-- Users food -->
-        <h1>{{day}}s food: </h1>
         <div class="food-wrapper">
+            {% if not foods %}
+            <h2>No foods added to {{ day }}...</h2>
+            {% endif %}
+
             {% for food in foods %}
             <div class="user-food-container">
                 <div class={% if food.eaten=='true' %} "food-container-ate" {% else %} "food-container-eat" {% endif %}>
@@ -67,6 +77,8 @@
                         <i class="fa-solid fa-candy-cane"></i>
                         {% elif food.food_type == 'other'%}
                         <i class="fa-solid fa-circle-question"></i>
+                        {% elif food.food_type == 'supplement'%}
+                        <i class="fa-solid fa-syringe"></i>
                         {% endif %}
                     </div>
 
@@ -84,7 +96,6 @@
 
                     {% endif %}
 
-                    <!-- work on edit btn -->
                     <div class="edit-remove-btn">
                         <form action="/foods/edit/{{ user.id}}/{{ food.id }}" method="POST">
                             <button>edit</button>
@@ -105,6 +116,52 @@
             </div>
             {% endfor %}
         </div>
+        <!-- ADD NOTES HERE -->
+        <div class="notes-wrapper">
+            <h1>{{day}}s reminders:</h1>
+            <form action="/reminder/{{user.id}}/{{ days_id }}" method="POST">
+                <input type="text" placeholder="Enter a reminder" id="search-bar" name="reminder">
+                <button>Confirm</button>
+            </form>
+            <!-- REMINDERS -->
+            {% if reminders %}
+
+            <div class="reminder-wrapper">
+                <ul>
+                    {% for reminder in reminders %}
+                    <li>
+
+                        <!--reminder not completed -->
+                        {% if reminder.completed == 'false' %}
+                        <h2 id="reminder-font">{{ reminder.reminder }}</h2>
+                        <form action="/reminder/mark-completed/{{ user.id }}/{{ days_id }}/{{ reminder.id }}"
+                            method="POST">
+                            <button class="eat-uneat-btn"><i class="fa-regular fa-circle-check"
+                                    id="check-green"></i></button>
+                        </form>
+                        {%elif reminder.completed == 'true'%}
+                        <!-- reminder completed -->
+                        <h2 id="reminder-font-completed">{{ reminder.reminder }}</h2>
+                        <form action="/reminder/mark-uncompleted/{{ user.id }}/{{ days_id }}/{{ reminder.id }}"
+                            method="POST">
+                            <button class="eat-uneat-btn"><i class="fa-regular fa-circle-xmark"
+                                    id="cross-red"></i></button>
+                        </form>
+                        {% endif %}
+
+                        <form action="/reminder/delete/{{user.id}}/{{ days_id }}/{{ reminder.id }}" method="POST">
+                            <button><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% elif not reminders %}
+            <h3>No reminders set for {{day}}...</h3>
+            {% endif %}
+        </div>
     </div>
 
     <!-- RIGHT COLUMN -->
@@ -113,44 +170,51 @@
 
         <!-- Unassigned user foods -->
         <!-- CREATE NEW FOOD -->
-        <div class="create-food-wrapper">
-            <div class="food_container">
-                <div class="food-container-inner">
-                    <form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
-                        <h2>Create new food:</h2>
-                        <label for="name">Food name: </label>
-                        <input type="text" id="name" name="name" required>
 
-                        <label for="calories">Number of kcals: </label>
-                        <input type="number" id="calories" name="calories" required>
-
-                        <label for="type">Food type</label>
-                        <select name="food_type" id="type" required>
-                            <option value="main">meal</option>
-                            <option value="fruit">fruit</option>
-                            <option value="drink">drink</option>
-                            <option value="snack">snack</option>
-                            <option value="other">other</option>
-                        </select>
-                        <button>Create</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- FOOD SEARCH BAR -->
         <div class="search-bar-wrapper">
             <h1>FOODS </h1>
             <div class="search-bar">
                 <form action="/foods/search/{{ user.id }}/{{ days_id }}" method="POST">
-                    <input type="text" placeholder="Search foods..." name="search">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" placeholder="Search foods..." name="search" id="search-bar">
+                    <button class="magnifying-glass-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </div>
+        <br>
         <div class="food-wrapper-right">
+            <div class="create-food-wrapper">
+                <div class="food-container">
+                    <div class="food-container-inner">
+                        <form action="/foods/new/{{ user.id }}/{{ day }}" method="POST">
+                            <h2>Create new food:</h2>
+
+                            <label for="name">Food name: </label>
+                            <input type="text" id="name" name="name" required>
 
 
+                            <label for="calories">Number of kcals: </label>
+                            <input type="number" id="calories" name="calories" required>
+
+
+                            <label for="type">Food type</label>
+                            <select name="food_type" id="type" required>
+                                <option value="main">meal</option>
+                                <option value="fruit">fruit</option>
+                                <option value="drink">drink</option>
+                                <option value="snack">snack</option>
+                                <option value="snack">supplement</option>
+                                <option value="other">other</option>
+                            </select>
+                            <br>
+                            <button class="add-food-btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             {% for food in results %}
             <div class="food-container">
                 <div class="food-container-inner">
@@ -181,11 +245,23 @@
                         <i class="fa-solid fa-candy-cane"></i>
                         {% elif food.food_type == 'other'%}
                         <i class="fa-solid fa-circle-question"></i>
+                        {% elif food.food_type == 'supplement'%}
+                        <i class="fa-solid fa-syringe"></i>
                         {% endif %}
                     </div>
 
                     <div class="edit-remove-btn">
-                        <button>edit</button>
+                        <form action="/foods/edit/{{ user.id}}/{{ food.id }}" method="POST">
+                            <button>edit</button>
+                            <!-- Hidden select to pass up the day_id -->
+                            <select name="day_id" id="day_id" hidden>
+                                {% for _day in days %}
+                                <option value="{{_day.id}}" {% if _day.day==day %} selected {% endif %}> {{_day.day}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+
                         <form action="/foods/remove/{{ user.id }}/{{ day }}/{{ food.id }}" method="POST">
                             <button>remove</button>
                         </form>
@@ -196,6 +272,7 @@
         </div>
     </div>
 </div>
+
 
 
 

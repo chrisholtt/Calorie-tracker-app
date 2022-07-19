@@ -263,10 +263,12 @@ body {
 
 .eat-text {
     color: green;
+    margin-right: 50px;
 }
 
 .ate-text{
     color: red;
+    margin-left: 50px;
 }
 
 .calorie-btn{
@@ -293,7 +295,7 @@ body {
     width: 45vw;
     height: 750px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
@@ -452,7 +454,7 @@ button{
 .notes-wrapper{
     margin-top: 20px;
     width: 50vw;
-    height: 380px;
+    height: 340px;
     border: 2px solid white;
     border-radius: 5px;
 }

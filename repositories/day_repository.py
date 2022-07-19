@@ -111,6 +111,10 @@ def get_first_day_id(user_id):
 
 def get_progress(calories, eaten_cals):
     ratio = 0
+
+    if not calories or not eaten_cals:
+        return ratio
+
     percentage = (eaten_cals / calories) * 100
 
     if percentage <= 0:
