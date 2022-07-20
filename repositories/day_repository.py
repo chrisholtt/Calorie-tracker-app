@@ -115,32 +115,9 @@ def get_progress(calories, eaten_cals):
     if not calories or not eaten_cals:
         return ratio
 
-    percentage = (eaten_cals / calories) * 100
+    ratio = (eaten_cals / calories) * 100
 
-    if percentage <= 0:
-        ratio = 0
-    elif percentage <= 10:
-        ratio = 10
-    elif percentage <= 20:
-        ratio = 20
-    elif percentage <= 30:
-        ratio = 30
-    elif percentage <= 40:
-        ratio = 40
-    elif percentage <= 50:
-        ratio = 50
-    elif percentage <= 60:
-        ratio = 60
-    elif percentage <= 70:
-        ratio = 70
-    elif percentage <= 80:
-        ratio = 80
-    elif percentage <= 90:
-        ratio = 90
-    elif percentage <= 100:
+    if ratio >= 100:
         ratio = 100
-    elif percentage > 100:
-        ratio = 100
-
+        return ratio
     return ratio
-    

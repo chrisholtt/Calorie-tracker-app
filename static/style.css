@@ -40,115 +40,13 @@ background: linear-gradient(0deg, rgba(0,255,0,1) 0%, rgba(254,255,207,1) 100%);
     border: 2px solid var(--Grey);
 }
 
-.progress0{
+.progress{
     height: 20px;
-    width: 0px;
     background: rgb(255,0,0);
 background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
-    
 }
-
-.progress10{
-    height: 20px;
-    width: 10%;
-    background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress20{
-    height: 20px;
-    width: 20%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress30{
-    height: 20px;
-    width: 30%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress40{
-    height: 20px;
-    width: 40%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress50{
-    height: 20px;
-    width: 50%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress60{
-    height: 20px;
-    width: 60%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress70{
-    height: 20px;
-    width: 70%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress80{
-    height: 20px;
-    width: 80%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress90{
-    height: 20px;
-    width: 90%;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-    border-right: 2px solid var(--Grey);
-}
-
-.progress100{
-    height: 20px;
-    width: auto;
-    background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-}
-
 
 
 .get-started-btn {
@@ -480,9 +378,15 @@ button{
 
 .add-food-btn i{
     font-size: 1.4rem;
-    /* color: var(--Blue1); */
     color: var(--Gray);
     cursor: pointer;
+    transition: 0.3s ease all;
+}
+.add-food-btn i:hover{
+    font-size: 1.4rem;
+    color: var(--Blue1);
+    cursor: pointer;
+    transition: 0.3s ease all;
 }
 
 .search-bar-wrapper{
