@@ -20,9 +20,9 @@
                 <div>
                     <!-- Checking to see if there is a calorie value for that day -->
                     {% if calories %}
-                    <h1>Target: {{ calories }} kcals</h1>
+                    <h2>Target: {{ calories }} kcals</h2>
                     {% else %}
-                    <h1>Enter kcal for {{ day }}</h1>
+                    <h2>Enter kcal for {{ day }}</h2>
                     {% endif %}
 
                     <form action="/calories/{{ user.id }}/{{ day }}" method="POST">
@@ -50,8 +50,6 @@
 
         <div class="progress-wrapper">
             <div class="progress-bar">
-                <!-- <div class="progress{{progress}}"></div> -->
-                <!-- <div class="progress" style="width:{{progress}}%;"></div> -->
                 <div class="progress" style="width:{{progress}}%;"></div>
             </div>
         </div>
@@ -206,7 +204,7 @@
                                 <option value="fruit">fruit</option>
                                 <option value="drink">drink</option>
                                 <option value="snack">snack</option>
-                                <option value="snack">supplement</option>
+                                <option value="supplement">supplement</option>
                                 <option value="other">other</option>
                             </select>
                             <br>

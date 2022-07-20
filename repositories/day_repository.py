@@ -121,3 +121,6 @@ def get_progress(calories, eaten_cals):
         ratio = 100
         return ratio
     return ratio
+
+
+

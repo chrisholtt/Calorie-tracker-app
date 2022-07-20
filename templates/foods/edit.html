@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Edit Food:</h1>
-<div class="food-wrapper">
-    <div class="food-container">
-        <div class="food-container-inner">
+<div class="edit-wrapper">
+    <h1>EDIT FOOD</h1>
+    <div class="edit-food-container">
+        <div class="edit-food-container-inner">
             <form action="/foods/edit/add/{{user_id}}/{{food_id}}/{{day_id}}" method="POST">
-                <input name="name" type="text" placeholder="{{food.name}}" value="{{ food.name }}">
                 <br>
                 <br>
-                <input name="calories" type="text" placeholder="{{food.calories}} kcals" value="{{food.calories}}">
+                <input class="edit-inputs" name="name" type="text" placeholder="{{food.name}}" value="{{ food.name }}">
                 <br>
                 <br>
-                <select name="food_type" id="type" required>
+                <input class="edit-inputs" name="calories" type="text" placeholder="{{food.calories}} kcals"
+                    value="{{food.calories}}">
+                <br>
+                <br>
+                <select class="edit-inputs" name="food_type" id="type" required>
                     <option value="main" {% if food.food_type=="main" %} selected {% endif %}>meal</option>
                     <option value="fruit" {% if food.food_type=="fruit" %} selected {% endif %}>fruit</option>
                     <option value="drink" {% if food.food_type=="drink" %} selected {% endif %}>drink</option>
@@ -21,27 +24,31 @@
                     <option value="supplement" {% if food.food_type=="supplement" %} selected {% endif %}>supplement
                     </option>
                 </select>
+                <br>
+                <br>
                 <button>Update</button>
             </form>
 
 
 
-            <div class="food-bg">
+            <div class="edit-food-bg">
                 {% if food.food_type == 'main' %}
-                <i class="fa-solid fa-burger"></i>
+                <i class="fa-solid fa-burger" id="blue-gradient"></i>
                 {% elif food.food_type == 'fruit'%}
-                <i class="fa-solid fa-apple-whole"></i>
+                <i class="fa-solid fa-apple-whole" id="blue-gradient"></i>
                 {% elif food.food_type == 'drink'%}
-                <i class="fa-solid fa-bottle-water"></i>
+                <i class="fa-solid fa-bottle-water" id="blue-gradient"></i>
                 {% elif food.food_type == 'snack'%}
-                <i class="fa-solid fa-candy-cane"></i>
+                <i class="fa-solid fa-candy-cane" id="blue-gradient"></i>
                 {% elif food.food_type == 'other'%}
-                <i class="fa-solid fa-circle-question"></i>
+                <i class="fa-solid fa-circle-question" id="blue-gradient"></i>
                 {% elif food.food_type == 'supplement'%}
-                <i class="fa-solid fa-syringe"></i>
+                <i class="fa-solid fa-syringe" id="blue-gradient"></i>
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
+
+
 {% endblock content %}

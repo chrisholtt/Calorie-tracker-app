@@ -81,5 +81,6 @@ def search(id, days_id):
     eaten_calories = food_repository.get_eaten_cals(id, days_id)
     eat_calories = food_repository.get_eat_cals(calories, eaten_calories)
     foods = food_repository.user_foods(id, days_id)
-    return render_template("foods/results.html", day=day, user=user, days=days, calories=calories, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id, results=results)
+    progress = day_repository.get_progress(calories, eaten_calories)
+    return render_template("foods/results.html", day=day, user=user, days=days, calories=calories, foods=foods, eaten_calories=eaten_calories, eat_calories=eat_calories, days_id=days_id, results=results, progress=progress)
     

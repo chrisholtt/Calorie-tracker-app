@@ -20,9 +20,9 @@
                 <div>
                     <!-- Checking to see if there is a calorie value for that day -->
                     {% if calories %}
-                    <h1>Target: {{ calories }} kcals</h1>
+                    <h2>Target: {{ calories }} kcals</h2>
                     {% else %}
-                    <h1>Enter kcal for {{ day }}</h1>
+                    <h2>Enter kcal for {{ day }}</h2>
                     {% endif %}
 
                     <form action="/calories/{{ user.id }}/{{ day }}" method="POST">
@@ -50,7 +50,9 @@
 
         <div class="progress-wrapper">
             <div class="progress-bar">
-                <div class="progress{{progress}}"></div>
+                <!-- <div class="progress{{progress}}"></div> -->
+                <!-- <div class="progress" style="width:{{progress}}%;"></div> -->
+                <div class="progress" style="width:{{progress}}%;"></div>
             </div>
         </div>
 
@@ -68,17 +70,17 @@
 
                     <div class="food-bg">
                         {% if food.food_type == 'main' %}
-                        <i class="fa-solid fa-burger"></i>
+                        <i class="fa-solid fa-burger" id="blue-gradient"></i>
                         {% elif food.food_type == 'fruit'%}
-                        <i class="fa-solid fa-apple-whole"></i>
+                        <i class="fa-solid fa-apple-whole" id="blue-gradient"></i>
                         {% elif food.food_type == 'drink'%}
-                        <i class="fa-solid fa-bottle-water"></i>
+                        <i class="fa-solid fa-bottle-water" id="blue-gradient"></i>
                         {% elif food.food_type == 'snack'%}
-                        <i class="fa-solid fa-candy-cane"></i>
+                        <i class="fa-solid fa-candy-cane" id="blue-gradient"></i>
                         {% elif food.food_type == 'other'%}
-                        <i class="fa-solid fa-circle-question"></i>
+                        <i class="fa-solid fa-circle-question" id="blue-gradient"></i>
                         {% elif food.food_type == 'supplement'%}
-                        <i class="fa-solid fa-syringe"></i>
+                        <i class="fa-solid fa-syringe" id="blue-gradient"></i>
                         {% endif %}
                     </div>
 
@@ -236,17 +238,17 @@
                     <!-- Displaying the food type -->
                     <div class="food-bg">
                         {% if food.food_type == 'main' %}
-                        <i class="fa-solid fa-burger"></i>
+                        <i class="fa-solid fa-burger" id="blue-gradient"></i>
                         {% elif food.food_type == 'fruit'%}
-                        <i class="fa-solid fa-apple-whole"></i>
+                        <i class="fa-solid fa-apple-whole" id="blue-gradient"></i>
                         {% elif food.food_type == 'drink'%}
-                        <i class="fa-solid fa-bottle-water"></i>
+                        <i class="fa-solid fa-bottle-water" id="blue-gradient"></i>
                         {% elif food.food_type == 'snack'%}
-                        <i class="fa-solid fa-candy-cane"></i>
+                        <i class="fa-solid fa-candy-cane" id="blue-gradient"></i>
                         {% elif food.food_type == 'other'%}
-                        <i class="fa-solid fa-circle-question"></i>
+                        <i class="fa-solid fa-circle-question" id="blue-gradient"></i>
                         {% elif food.food_type == 'supplement'%}
-                        <i class="fa-solid fa-syringe"></i>
+                        <i class="fa-solid fa-syringe" id="blue-gradient"></i>
                         {% endif %}
                     </div>
 

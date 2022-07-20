@@ -25,8 +25,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-bottom: 0;
 }
 
-
-/* PROGRESS BAR */
 .progress-wrapper{
     width: 50vw;
     margin-top: 20px;
@@ -56,6 +54,7 @@ background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     background: var(--Blue1);
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 .get-started-btn a{
     color: white;
@@ -487,4 +486,50 @@ button{
 .user-column {
     display: flex;
     flex-direction: column;
+}
+
+.edit-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.edit-food-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    margin: 0;
+    height: auto;
+}
+
+.edit-food-container-inner{
+    display: flex; 
+    flex-direction: column;
+    width: 360px;
+    height: 440px;
+    background: var(--Gray0);
+    border-radius: 5px;
+    text-align: center;
+    justify-content: space-between;
+    box-shadow: 3px 3px 5px #343434;
+}
+
+
+.edit-food-bg {
+    font-size: 180px;
+    color: var(--Blue1);
+}
+
+
+.edit-inputs{
+    width: 200px;
+    height: 30px;
+    font-size: 24px;
+}
+
+.hero-wrapper{
+    margin-left: 100px;
+    margin-top: 100px;
 }
