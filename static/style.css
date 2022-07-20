@@ -5,8 +5,8 @@
     --Blue2: #240090;
     --Blue1: #3500d3;
     --Gray: #282828;
-    --Gray1:rgb(230, 230, 230);
-    --Gray0:rgb(247, 247, 247);
+    --Gray1:rgb(244, 244, 244);
+    --Gray0:rgb(249, 249, 249);
 
     --Red: #ffadad;
     --Orange: #ffd6a5;
@@ -37,6 +37,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 background: linear-gradient(0deg, rgba(0,255,0,1) 0%, rgba(254,255,207,1) 100%);
     height: 20px;
     border-radius: 20px;
+    border: 2px solid var(--Grey);
 }
 
 .progress0{
@@ -46,94 +47,104 @@ background: linear-gradient(0deg, rgba(0,255,0,1) 0%, rgba(254,255,207,1) 100%);
 background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
+    
 }
 
 .progress10{
     height: 20px;
-    width: 90px;
+    width: 10%;
     background: rgb(255,0,0);
 background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
 }
 
 .progress20{
     height: 20px;
-    width: 180px;
-    background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-}
-
-.progress30{
-    height: 20px;
-    width: 270px;
-    background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-}
-
-.progress40{
-    height: 20px;
-    width: 360px;
-    background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-}
-
-.progress50{
-    height: 20px;
-    width: 450px;
-    background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-}
-
-.progress60{
-    height: 20px;
-    width: 540px;
-    background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
-    border-radius: 20px;
-    transition: 1s ease all;
-}
-
-.progress70{
-    height: 20px;
-    width: 630px;
+    width: 20%;
     background: rgb(255,0,0);
     background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
+}
+
+.progress30{
+    height: 20px;
+    width: 30%;
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    border-radius: 20px;
+    transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
+}
+
+.progress40{
+    height: 20px;
+    width: 40%;
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    border-radius: 20px;
+    transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
+}
+
+.progress50{
+    height: 20px;
+    width: 50%;
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    border-radius: 20px;
+    transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
+}
+
+.progress60{
+    height: 20px;
+    width: 60%;
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    border-radius: 20px;
+    transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
+}
+
+.progress70{
+    height: 20px;
+    width: 70%;
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    border-radius: 20px;
+    transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
 }
 
 .progress80{
     height: 20px;
-    width: 720px;
+    width: 80%;
     background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
 }
 
 .progress90{
     height: 20px;
-    width: 810px;
+    width: 90%;
     background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
+    border-right: 2px solid var(--Grey);
 }
 
 .progress100{
     height: 20px;
-    width: 900px;
+    width: auto;
     background: rgb(255,0,0);
-background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
     border-radius: 20px;
     transition: 1s ease all;
 }
@@ -154,7 +165,13 @@ background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(254,255,207,1) 100%);
 
 #title {
     font-family: 'Lobster';
-    color: var(--Blue1);
+    background: rgb(53,0,211);
+    background-image: linear-gradient(0deg, rgba(53,0,211,1) 0%, rgba(0,212,255,1) 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+-moz-background-clip: text;
+-webkit-text-fill-color: transparent; 
+-moz-text-fill-color: transparent;
     font-size: 2rem;
     transition: 0.3s ease all;
 }
@@ -432,11 +449,23 @@ button{
 #check-green {
     color: green;
     font-size: 1.4rem;
+    transition: 0.3s ease all;
+}
+#check-green:hover {
+    color: red;
+    font-size: 1.4rem;
+    transition: 0.3s ease all;
 }
 
 #cross-red {
     color: red;
     font-size: 1.4rem;
+    transition: 0.3s ease all;
+}
+#cross-red:hover {
+    color: green;
+    font-size: 1.4rem;
+    transition: 0.3s ease all;
 }
 
 
