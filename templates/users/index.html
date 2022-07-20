@@ -17,12 +17,24 @@
     {% for user in users %}
     <form action="/days/{{user.id }}">
         <div class="user-wrapper">
-            <input type="text" class="user-inputs" value={{user.name}}>
-            <input type="password" class="user-inputs" placeholder="Password">
-            <button class="user-inputs" id="black-btn">Login</button>
-            <a href="/">
-                <h5>Forgotten password?</h5>
-            </a>
+
+            <div class="user-circle">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="user-input-wrapper">
+                <input type="text" class="user-inputs" value={{user.name}}>
+                <input type="password" class="user-inputs" placeholder="Password">
+                <button class="user-inputs" id="black-btn">Login</button>
+                <a href="/">
+                    <h5>Forgotten password?</h5>
+                </a>
+            </div>
+
+
+
+
+
         </div>
     </form>
     {% endfor %}

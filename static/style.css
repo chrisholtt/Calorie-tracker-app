@@ -5,8 +5,8 @@
     --Blue2: #240090;
     --Blue1: #3500d3;
     --Gray: #282828;
-    --Gray1:rgb(201, 201, 201);
-    --Gray0:rgb(232, 232, 232);
+    --Gray1:rgb(230, 230, 230);
+    --Gray0:rgb(247, 247, 247);
 
     --Red: #ffadad;
     --Orange: #ffd6a5;
@@ -153,8 +153,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-size: 2rem;
     transform: rotate(-3deg);
     transition: 0.3s ease all;
-
 }
+
+
 
 nav ul {
     display: flex;
@@ -224,7 +225,7 @@ body {
 }
 
 .days-wrapper a {
-    color: white;
+    color: var(--Grey);
     text-decoration: none;
     padding: 5px;
     transition: 0.3s ease all;
@@ -322,7 +323,17 @@ body {
     height: auto;
 }
 
-/*  */
+#blue-gradient {
+    background: rgb(53,0,211);
+    background-image: linear-gradient(0deg, rgba(53,0,211,1) 0%, rgba(0,212,255,1) 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+-moz-background-clip: text;
+-webkit-text-fill-color: transparent; 
+-moz-text-fill-color: transparent;
+}
+
+
 .food-container-inner{
     display: flex; 
     flex-direction: column;
@@ -451,6 +462,12 @@ button{
     border: none;
 }
 
+
+.magnifying-glass-btn i {
+    color: var(--Grey);
+}
+
+
 .notes-wrapper{
     margin-top: 20px;
     width: 50vw;
@@ -462,12 +479,14 @@ button{
 
 .user-wrapper{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    background: var(--White);
+    background: var(--Gray0);
     border-radius: 7px;
     padding: 5px;
     margin-top: 30px;
+    box-shadow: 3px 3px 5px #34343468;
+    
 }
 
 .user-inputs{
@@ -475,7 +494,7 @@ button{
     height: 25px;
     border-radius: 5px;
     border: 1px solid var(--Grey);
-    background: rgb(220, 220, 255);
+    background: var(--Gray0);
     margin-top: 5px;
 }
 
@@ -488,5 +507,25 @@ button{
     align-items: center;
     flex-direction: column;
     margin: auto;
+    justify-content: center;
+}
+
+.user-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 5px #34343468;
+    margin-right: 10px;
+
+}
+
+.user-input-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
