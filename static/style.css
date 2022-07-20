@@ -561,7 +561,16 @@ button{
     justify-content: center;
     box-shadow: 3px 3px 5px #34343468;
     margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 
+.user-circle i {
+    color: var(--Grey);
+}
+
+.user-circle button {
+    background: none;
 }
 
 .user-input-wrapper{
@@ -569,4 +578,9 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.user-column {
+    display: flex;
+    flex-direction: column;
 }

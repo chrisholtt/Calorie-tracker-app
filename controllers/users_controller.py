@@ -30,3 +30,9 @@ def new_user():
     user_days = setup_days(user)
     day_repository.save_days(user_days)
     return redirect("/users")
+
+# DELETE USER 
+@users_blueprint.route("/user/delete/<id>", methods=["POST"])
+def delete_user(id):
+    user_repository.delete(id)
+    return redirect("/users")

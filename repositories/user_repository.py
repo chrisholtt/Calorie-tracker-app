@@ -19,6 +19,11 @@ def delete_all():
     sql = "DELETE FROM users"
     run_sql(sql)
 
+def delete(id):
+    sql = "DELETE FROM users WHERE ID = %s"
+    values = [id]
+    run_sql(sql, values)
+
 
 def select_all():
     users = []

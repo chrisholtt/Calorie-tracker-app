@@ -17,11 +17,11 @@
     {% for user in users %}
     <form action="/days/{{user.id }}">
         <div class="user-wrapper">
-
-            <div class="user-circle">
-                <i class="fa-solid fa-user"></i>
+            <div class="user-column">
+                <div class="user-circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
             </div>
-
             <div class="user-input-wrapper">
                 <input type="text" class="user-inputs" value={{user.name}}>
                 <input type="password" class="user-inputs" placeholder="Password">
@@ -30,16 +30,21 @@
                     <h5>Forgotten password?</h5>
                 </a>
             </div>
-
-
-
-
-
-        </div>
     </form>
-    {% endfor %}
-    <br>
-    <a href="/users/signup"><button>Create New Account</button></a>
+    <div class="user-circle">
+        <form action="/user/delete/{{ user.id }}" method="POST">
+            <button><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+    </div>
+
+
+
+
+
+</div>
+{% endfor %}
+<br>
+<a href="/users/signup"><button>Create New Account</button></a>
 </div>
 {% endif %}
 {% endblock content %}
